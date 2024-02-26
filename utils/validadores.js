@@ -4,7 +4,7 @@ const validarNome = (nome) => {
 
 const validarEmail = (email) => {
     const emailStr = email?.toString();
-    return emailStr.length >= 5 && emailStr.includes('@') && emailStr.includes('.');
+    return email.length >= 5 && emailStr.includes('@') && emailStr.includes('.');
 }
 
 const validarSenha = (senha) => {
@@ -21,3 +21,5 @@ export {
     validarSenha,
     validarConfirmacaoSenha
 }
+
+console.log(validarSenha('caio@gmail.com'));

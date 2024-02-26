@@ -1,9 +1,9 @@
-@mixin botaoPrimario {
+@mixin botaoPrimario{
     background-color: $corPrimaria;
     color: $branco;
 }
 
-@mixin botaoInvertido {
+@mixin botaoInvertido{
     background-color: $branco;
     color: $corPrimaria;
     border: 1px solid $corPrimaria;
@@ -15,15 +15,17 @@
     border-radius: 6px;
     cursor: pointer;
 
-    &.primaria {
+    &.primaria{
+
         @include botaoPrimario;
 
-        &:hover {
+        &:hover{
             @include botaoInvertido;
         }
     }
 
-    &.invertido {
+    &.invertido{
+        
         @include botaoInvertido;
 
         &:hover {
@@ -31,7 +33,7 @@
         }
     }
 
-    &:disabled {
+    &:disabled{
         opacity: 0.5;
     }
 }

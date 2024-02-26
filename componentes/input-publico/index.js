@@ -9,7 +9,7 @@ export default function InputPublico({
     mensagemValidacao = "",
     aoAlterarValor
 }) {
-    return (
+    return(
         <div className="inputPublicoContainer">
             <div className="inputPublico">
                 <Image
@@ -19,13 +19,14 @@ export default function InputPublico({
                     width={20}
                     height={20}
                 />
-                
+
                 <input
                     type={tipo}
                     placeholder={texto}
                     value={valor}
                     onChange={aoAlterarValor}
                 />
+
             </div>
 
             {exibirMensagemValidacao && <p className="mensagemValidacao">{mensagemValidacao}</p>}

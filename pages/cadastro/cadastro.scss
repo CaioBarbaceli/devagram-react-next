@@ -1,16 +1,16 @@
-.paginaCadastro {
-    .uploadImagemContainer {
+.paginaCadastro{
+    .uploadImagemContainer{
         text-align: center;
         position: relative;
         margin-bottom: 48px;
         cursor: pointer;
 
-        .avatarPreview {
+        .avatarPreview{
             height: 120px;
             width: 120px;
         }
 
-        &::after {
+        &::after{
             content: url('/imagens/camera.svg');
             width: 48px;
             height: 48px;
@@ -22,12 +22,11 @@
         }
     }
 
-    @media screen and (min-width: $desktopBreakpoint) {
-        .rodapePaginaPublica {
+    @media screen and (min-width: $desktopBreakpoint){
+        .rodapePaginaPublica{
             display: flex;
             justify-content: center;
-            
-            p {
+            p{
                 margin-right: 6px;
             }
         }

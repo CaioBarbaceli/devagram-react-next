@@ -1,24 +1,24 @@
-import { useState } from "react";
+import InputPublico from "../input-publico";
+import Botao from "../../componentes/botao";
 import Image from "next/image";
 import Link from "next/link";
-import InputPublico from "../inputPublico";
-import Botao from "../botao";
-import { validarEmail, validarSenha } from "../../utils/validadores";
-import UsuarioService from "../../services/UsuarioService";
+import { useState } from "react";
+import {validarEmail, validarSenha} from "../../utils/validadores"
 
 import imagemEnvelope from "../../public/imagens/envelope.svg";
 import imagemChave from "../../public/imagens/chave.svg";
 import imagemLogo from "../../public/imagens/logo.svg";
+import UsuarioService from "../../services/UsuarioService";
 
 const usuarioService = new UsuarioService();
 
-export default function Login({ aposAutenticacao }) {
+export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [estaSubmetendo, setEstaSubmetendo] = useState(false);
 
     const validarFormulario = () => {
-        return (
+        return(
             validarEmail(email)
             && validarSenha(senha)
         );
@@ -26,7 +26,7 @@ export default function Login({ aposAutenticacao }) {
 
     const aoSubmeter = async (e) => {
         e.preventDefault();
-        if (!validarFormulario()) {
+        if(!validarFormulario()){
             return;
         }
 
@@ -34,26 +34,22 @@ export default function Login({ aposAutenticacao }) {
 
         try {
             await usuarioService.login({
-                login: email,
+                login: email, 
                 senha
             });
-
-            if (aposAutenticacao) {
-                aposAutenticacao();
-            }
+            //redirecionar o usuario para a home
         } catch (error) {
             alert(
                 "Erro ao realizar o login. " + error?.response?.data?.erro
             );
         }
-
         setEstaSubmetendo(false);
-    } 
-
-    return (
+    }
+    return(
         <section className={`paginaLogin paginaPublica`}>
             <div className="logoContainer">
-                <Image
+                <Image 
+                    priority
                     src={imagemLogo}
                     alt="logotipo"
                     layout="fill"
@@ -69,7 +65,7 @@ export default function Login({ aposAutenticacao }) {
                         tipo="email"
                         aoAlterarValor={e => setEmail(e.target.value)}
                         valor={email}
-                        mensagemValidacao="O endereço informado é inválido"
+                        mensagemValidacao="O endereco informado é invalido"
                         exibirMensagemValidacao={email && !validarEmail(email)}
                     />
 
@@ -79,22 +75,22 @@ export default function Login({ aposAutenticacao }) {
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
                         valor={senha}
-                        mensagemValidacao="Precisa ter pelo menos 3 caracteres"
+                        mensagemValidacao="Precisa ter pelo menos 4 caracteres"
                         exibirMensagemValidacao={senha && !validarSenha(senha)}
                     />
 
                     <Botao
-                        texto="Login"
-                        tipo="submit"
+                        texto={"Login"}
+                        type="submit"
                         desabilitado={!validarFormulario() || estaSubmetendo}
                     />
                 </form>
-                
+
                 <div className="rodapePaginaPublica">
-                    <p>Não possui uma conta?</p>
-                    <Link href="/cadastro">Faça seu cadastro agora!</Link>
+                    <p>Não possui uma conta</p>
+                    <Link href="/cadastro">Faça o seu cadastro agora</Link>
                 </div>
             </div>
         </section>
-    );
+    )
 }

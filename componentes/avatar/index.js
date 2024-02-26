@@ -1,15 +1,17 @@
-import avatarImg from '../../public/imagens/avatar.svg';
+import avatarImg from '../../public/imagens/avatar.svg'
 
-export default function Avatar({ src }) {
+export default function Avatar({ src }){
     const getAvatar = () => {
-        if (src && src !== 'undefined') {
+        if (src && src !== 'undefined'){
             return src;
         }
 
         return avatarImg.src;
+
     }
 
-    return (
+    return(
+        // eslint-disable-next-line @next/next/no-img-element
         <img
             src={getAvatar()}
             alt='Avatar'
