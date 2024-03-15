@@ -12,7 +12,7 @@ import UsuarioService from "../../services/UsuarioService";
 
 const usuarioService = new UsuarioService();
 
-export default function Login() {
+export default function Login({aposAutenticacao}) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [estaSubmetendo, setEstaSubmetendo] = useState(false);
@@ -37,7 +37,12 @@ export default function Login() {
                 login: email, 
                 senha
             });
-            //redirecionar o usuario para a home
+
+            if(aposAutenticacao){
+                //redirecionar o usuario para a home
+                aposAutenticacao();
+            }
+            
         } catch (error) {
             alert(
                 "Erro ao realizar o login. " + error?.response?.data?.erro
@@ -49,7 +54,6 @@ export default function Login() {
         <section className={`paginaLogin paginaPublica`}>
             <div className="logoContainer">
                 <Image 
-                    priority
                     src={imagemLogo}
                     alt="logotipo"
                     layout="fill"
