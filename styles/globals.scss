@@ -5,34 +5,36 @@
   font-size: 14px;
 }
 
-html, body, #__next{
+html,
+body,
+#__next {
   height: 100%;
   margin: 0;
 }
 
-.avatar{
+.avatar {
   border-radius: 50%;
   object-fit: cover;
 }
 
-.oculto{
+.oculto {
   display: none;
 }
 
 input {
-  &::placeholder{
+  &::placeholder {
     /* chrome, opera, safari e firefox */
     color: $cinza2;
     opacity: 1;
   }
 
-  &:-ms-input-placeholder{
+  &:-ms-input-placeholder {
     /* explorer */
     color: $cinza2;
   }
 }
 
-.desktop{
+.desktop {
   @media screen and (min-width: $desktopBreakpoint) {
     display: block;
   }
@@ -42,7 +44,7 @@ input {
   }
 }
 
-.mobile{
+.mobile {
   @media screen and (min-width: $desktopBreakpoint) {
     display: none;
   }
@@ -52,7 +54,7 @@ input {
   }
 }
 
-.mensagemValidacao{
+.mensagemValidacao {
   display: block;
   color: $vermelho;
   font-size: 90%;
@@ -60,7 +62,7 @@ input {
   margin-bottom: 15px;
 }
 
-.barraNavegacao{
+.barraNavegacao {
   ul {
     display: flex;
     justify-content: space-around;
@@ -85,9 +87,9 @@ body {
   }
 }
 
-.largura30pctDesktop{
+.largura30pctDesktop {
   @media screen and (min-width: $desktopBreakpoint) {
-    width:30%;
+    width: 30%;
     margin: auto;
   }
 }
@@ -99,4 +101,6 @@ body {
 @import '../pages/cadastro/cadastro.scss';
 @import '../componentes/layout/cabecalho.scss';
 @import '../componentes/layout/rodape.scss';
-@import '../componentes/feed/feed.scss'
+@import '../componentes/feed/feed.scss';
+@import '../componentes/cabecalhoComAcoes/cabecalhoComAcoes.scss';
+@import '../pages/perfil/perfil.scss';

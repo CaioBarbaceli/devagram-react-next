@@ -9,15 +9,21 @@ import { useRouter } from 'next/router';
 
 const usuarioService = new UsuarioService();
 
-export default function Cabecalho(){
+export default function Cabecalho() {
     const [resultadoPesquisa, setResultadoPesquisa] = useState([]);
     const [termoPesquisado, setTermoPesquisado] = useState('');
     const router = useRouter();
-    const aoPesquisar = async (e) =>{
+
+    let cabecalhoClassName = '';
+    if (window && window.location.pathname !== '/') {
+        cabecalhoClassName = 'desktop';
+    }
+
+    const aoPesquisar = async (e) => {
         setTermoPesquisado(e.target.value);
         setResultadoPesquisa([]);
 
-        if(termoPesquisado.length < 3) {
+        if (termoPesquisado.length < 3) {
             return;
         }
 
@@ -39,8 +45,8 @@ export default function Cabecalho(){
         router.push('/');
     }
 
-    return(
-        <header className='cabecalhoPrincipal'>
+    return (
+        <header className={`cabecalhoPrincipal ${cabecalhoClassName}`}>
             <div className='conteudoCabecalhoPrincipal'>
                 <div className='logoCabecalhoPrincipal'>
                     <Image
@@ -52,22 +58,22 @@ export default function Cabecalho(){
                     />
                 </div>
 
-                    <div className='barraPesquisa'>
-                        <div className='containerImagemLupa'>
-                            <Image
-                                src={imagemLupa}
-                                alt='icone lupa'
-                                layout='fill'
-                            />
-                        </div>
-                        <input
-                            type='text'
-                            placeholder='Pesquisar'
-                            value={termoPesquisado}
-                            onChange={aoPesquisar}
+                <div className='barraPesquisa'>
+                    <div className='containerImagemLupa'>
+                        <Image
+                            src={imagemLupa}
+                            alt='icone lupa'
+                            layout='fill'
                         />
                     </div>
-                <Navegacao className='desktop'/>
+                    <input
+                        type='text'
+                        placeholder='Pesquisar'
+                        value={termoPesquisado}
+                        onChange={aoPesquisar}
+                    />
+                </div>
+                <Navegacao className='desktop' />
             </div>
 
             {resultadoPesquisa.length > 0 && (
@@ -84,7 +90,7 @@ export default function Cabecalho(){
                     ))}
                 </div>
             )}
-            
+
         </header>
     )
 }
