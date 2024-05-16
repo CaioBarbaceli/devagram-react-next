@@ -5,28 +5,28 @@
         display: flex;
         padding: 8px 16px;
 
-        .logoCabecalhoPrincipal{
+        .logoCabecalhoPrincipal {
             position: relative;
             width: 140px;
             height: 30px;
             cursor: pointer;
         }
 
-        .barraPesquisa{
+        .barraPesquisa {
             position: relative;
             flex: 1;
             margin-left: 16px;
             display: flex;
             align-items: center;
 
-            .containerImagemLupa{
+            .containerImagemLupa {
                 position: absolute;
                 width: 20px;
                 height: 20px;
                 left: 8px;
             }
 
-            input{
+            input {
                 background-color: $corPrimaria4;
                 border: none;
                 outline: none;
@@ -36,7 +36,7 @@
                 border-radius: 4px;
                 color: $corPrimaria;
 
-                &:focus{
+                &:focus {
                     border: 1px solid $corPrimaria;
                 }
             }
@@ -49,22 +49,22 @@
         width: 100%;
         z-index: 9;
 
-        .resultadoPesquisa{
+        .resultadoPesquisa {
             display: flex;
             padding: 10px 16px;
 
-            &:hover{
+            &:hover {
                 background-color: $cinza;
             }
 
-            .avatar{
+            .avatar {
                 height: 32px;
                 width: 32px;
                 margin-right: 8px;
             }
 
-            .informacoesUsuario{
-                > * {
+            .informacoesUsuario {
+                >* {
                     display: block;
                     font-size: 12px;
                     color: $cinza4;
@@ -73,39 +73,40 @@
         }
     }
 
-    @media screen and (min-width: $desktopBreakpoint){
-        background-color: $branco;    
-        border: none;  
-        
-        .conteudoCabecalhoPrincipal{
+    @media screen and (min-width: $desktopBreakpoint) {
+        background-color: $branco;
+        border: none;
+        margin-bottom: 30px;
+
+        .conteudoCabecalhoPrincipal {
             max-width: 60%;
             margin: auto;
             align-items: center;
             justify-content: center;
 
-            .logoCabecalhoPrincipal{
+            .logoCabecalhoPrincipal {
                 width: 200px;
             }
 
-            .barraPesquisa{
+            .barraPesquisa {
                 flex: 0.5;
                 margin: 0px 10px 0px 30px;
 
-                input{
+                input {
                     width: 100%;
                 }
             }
 
-            .barraNavegacao{
-                ul{
-                    li{
+            .barraNavegacao {
+                ul {
+                    li {
                         margin: 0px 0px 0px 20px;
                     }
                 }
             }
         }
 
-        .resultadoPesquisaContainer{
+        .resultadoPesquisaContainer {
             width: 25%;
             margin: auto;
             cursor: pointer;

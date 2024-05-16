@@ -21,5 +21,3 @@ export {
     validarSenha,
     validarConfirmacaoSenha
 }
-
-console.log(validarSenha('caio@gmail.com'));

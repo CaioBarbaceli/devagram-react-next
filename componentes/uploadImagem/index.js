@@ -4,14 +4,14 @@ export default function UploadImagem({
     className = '',
     setImagem,
     imagemPreview,
-    imagemPreviewClassName ='',
+    imagemPreviewClassName = '',
     aoSetarAReferencia
 }) {
     const referenciaInput = useRef(null);
 
     useEffect(() => {
 
-        if(!aoSetarAReferencia){
+        if (!aoSetarAReferencia) {
             return;
         }
         aoSetarAReferencia(referenciaInput?.current);
@@ -25,11 +25,15 @@ export default function UploadImagem({
     const aoAlterarImagem = () => {
         console.log('aoAlterarImagem')
 
-        if (!referenciaInput?.current?.files?.length){
+        if (!referenciaInput?.current?.files?.length) {
             return;
         }
 
         const arquivo = referenciaInput?.current?.files[0];
+        obterUrlDaImagemEAtualizarEstado(arquivo);
+    }
+
+    const obterUrlDaImagemEAtualizarEstado = (arquivo) => {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(arquivo);
         fileReader.onloadend = () => {
@@ -40,8 +44,21 @@ export default function UploadImagem({
         }
     }
 
-    return(
-        <div className={`uploadImagemContainer ${className}`} onClick={abrirSeletorArquivos}>
+
+    const aoSoltarAImagem = (e) => {
+        e.preventDefault();
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            const arquivo = e.dataTransfer.files[0];
+            obterUrlDaImagemEAtualizarEstado(arquivo);
+        }
+    }
+
+    return (
+        <div className={`uploadImagemContainer ${className}`}
+            onClick={abrirSeletorArquivos}
+            onDragOver={e => e.preventDefault()}
+            onDrop={aoSoltarAImagem}
+        >
             {imagemPreview && (
                 <div className="imagemPreviewContainer">
                     <img
@@ -51,10 +68,10 @@ export default function UploadImagem({
                     />
                 </div>
             )}
-            <input 
-                type='file' 
-                className='oculto' 
-                accept="image/*" 
+            <input
+                type='file'
+                className='oculto'
+                accept="image/*"
                 ref={referenciaInput}
                 onChange={aoAlterarImagem}
             />

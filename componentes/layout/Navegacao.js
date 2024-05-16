@@ -21,12 +21,12 @@ const mapaDeRotas = {
     },
     perfil: {
         imagemAtivo: imgUsuarioAtivo,
-        rotasAtivacao: ['/perfil/eu', '/perfil/eu/editar'],
+        rotasAtivacao: ['/perfil/eu', '/perfil/editar'],
         imagemPadrao: imgUsuarioCinza
     }
 }
 
-export default function Navegacao({className}){
+export default function Navegacao({ className }) {
     const [rotaAtiva, setRotaAtiva] = useState('home');
     const router = useRouter();
 
@@ -35,16 +35,16 @@ export default function Navegacao({className}){
     }, [router.asPath]);
 
     const definierRotaAtiva = () => {
-        const chavesDoMapaDeRotas= Object.keys(mapaDeRotas);
+        const chavesDoMapaDeRotas = Object.keys(mapaDeRotas);
         const indiceAtivo = chavesDoMapaDeRotas.findIndex(chave => {
             return mapaDeRotas[chave].rotasAtivacao.includes(
                 window.location.pathname
             );
         });
 
-        if (indiceAtivo === -1){
+        if (indiceAtivo === -1) {
             setRotaAtiva('home')
-        } else{
+        } else {
             setRotaAtiva(chavesDoMapaDeRotas[indiceAtivo]);
         }
     }
@@ -52,7 +52,7 @@ export default function Navegacao({className}){
     const obterImagem = (nomeRota) => {
         const rotaAtivada = mapaDeRotas[nomeRota];
 
-        if(rotaAtiva === nomeRota){
+        if (rotaAtiva === nomeRota) {
             return rotaAtivada.imagemAtivo;
         }
 
@@ -64,7 +64,7 @@ export default function Navegacao({className}){
         router.push(mapaDeRotas[nomeRota].rotasAtivacao[0]);
     }
 
-    return(
+    return (
         <nav className={`barraNavegacao ${className}`}>
             <ul>
                 <li onClick={() => aoClicarNoIcone('home')}>
